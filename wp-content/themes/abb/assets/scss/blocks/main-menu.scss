@@ -1,0 +1,35 @@
+.main-menu {
+	flex-grow: 1;
+	margin-left: 115px;
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__link {
+		color: $text-color-black;
+		transition: color 0.2s;
+
+		&:hover {
+			color: adjust-color($color: $text-color-black, $lightness: +33%);
+		}
+	}
+
+	@media (max-width: map-get($breakpoints, "desktop")) {
+
+		display: none;
+		margin: 0;
+
+		&__container {
+			display: block;
+			padding-top: 25px;
+		}
+
+		&__item {
+			padding: 5px 0;
+		}
+
+	}
+
+}

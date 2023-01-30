@@ -1,0 +1,111 @@
+.header {
+	width: 100%;
+	color: $text-color-black;
+	background: $base-bg;
+	padding: 15px 0;
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		position: relative;
+		width: 100%;
+	}
+
+	.site-logo {
+
+		img {
+			display: block;
+		}
+	}
+
+	.menu-mobile-icon {
+		position: relative;
+		height: 2px;
+		width: 18px;
+		background: $text-color-black;
+		transition: background 0.2s;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			transition: all 0.2s;
+			background: $text-color-black;
+		}
+
+		&::before {
+			top: 5px;
+		}
+
+		&::after {
+			top: -6px;
+		}
+	}
+
+	.menu-checkbox-label {
+		display: none;
+		position: absolute;
+		top: 10px;
+		right: 15px;
+		padding: 15px 8px;
+		cursor: pointer;
+
+		&:hover {
+
+			.menu-mobile-icon,
+			.menu-mobile-icon::before,
+			.menu-mobile-icon::after {
+				background: adjust-color($color: $text-color-black, $lightness: +33%);
+			}
+		}
+	}
+
+
+	.menu-checkbox {
+		display: none;
+
+		&:checked {
+
+			~ .main-menu {
+				display: block;
+			}
+
+			~ .menu-checkbox-label {
+
+				.menu-mobile-icon {
+					background: none;
+
+					&::before {
+						transform: rotate(-45deg);
+					}
+
+					&::after {
+						transform: rotate(45deg);
+					}
+
+					&::before,
+					&::after {
+						top: 0;
+					}
+				}
+			}
+		}
+	}
+
+	@media (max-width: map-get($breakpoints, "desktop")) {
+		position: fixed;
+		z-index: 100;
+		box-shadow: 0 1px 5px 0 rgb(0 0 0 / 10%);
+
+		.menu-checkbox-label {
+			display: block;
+		}
+
+		.header__container {
+			display: block;
+		}
+	}
+}

@@ -1,0 +1,20 @@
+.footer-menu {
+	margin-right: 90px;
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__item:not(:last-child) {
+		margin-right: 20px;
+	}
+
+	&__link {
+		color: inherit;
+	}
+
+	@media (max-width: map-get($breakpoints, "desktop")) {
+		margin: 0 0 12px 0;
+	}
+}

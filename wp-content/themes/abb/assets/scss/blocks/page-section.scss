@@ -1,0 +1,164 @@
+.page-section {
+	padding: 60px 0;
+
+	&__heading {
+		font-size: $h2-font-size;
+		position: relative;
+		margin-bottom: 20px;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: -25px;
+			width: 48px;
+			height: 6px;
+			background: $primary-color;
+		}
+	}
+
+
+	&__row {
+		display: grid;
+		gap: 16px;
+
+		&--2 {
+			grid-template-columns: calc(100% / 3 - 12px) 1fr;
+		}
+
+		&--3 {
+			grid-template-columns: repeat(3, calc(100% / 3 - 12px));
+		}
+	}
+
+	&__column {
+
+		&--content {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.button {
+			margin-top: auto;
+		}
+	}
+
+	&__card {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+
+	}
+
+	&__card-image {
+		margin-bottom: 24px;
+		width: 100%;
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+
+	&__card-heading {
+		font-size: $h2-font-size;
+		line-height: 1.125;
+		margin-bottom: 12px;
+	}
+
+	&__text,
+	&__card-text {
+		margin-bottom: 12px;
+	}
+
+
+	&--download {
+		padding: 70px 0 50px;
+		background: #f0f0f0;
+
+		.page-section__heading {
+			margin-bottom: 34px;
+		}
+
+		.page-section__image {
+			position: relative;
+			left: -185px;
+			top: -30px;
+			margin-bottom: -40px;
+		}
+	}
+
+	&--cards {
+
+		.page-section__row {
+			row-gap: 32px;
+		}
+
+		.page-section__heading {
+			margin-bottom: 24px;
+		}
+	}
+
+	&--product {
+
+		.page-section__heading {
+			margin-top: 25px;
+		}
+
+		img {
+			width: 100%;
+			height: auto;
+		}
+
+		&:nth-child(odd) {
+
+			.page-section__row--2 {
+				grid-template-columns: 1fr calc(100% / 3 - 12px);
+			}
+
+			.page-section__column--content {
+				order: -1;
+			}
+		}
+	}
+
+	@media (max-width: map-get($breakpoints, "tablet")) {
+
+		&:nth-child(n) {
+
+			.page-section__row {
+				grid-template-columns: 1fr;
+			}
+
+			.page-section__column--content {
+				order: initial;
+			}
+		}
+
+		&__heading,
+		&__card-heading {
+
+			font-size: $h2-font-size-mobile;
+		}
+
+		.page-section__image,
+		.page-section__card-image {
+			width: calc(100% + $container-padding * 2);
+			margin-left: -$container-padding;
+			margin-right: -$container-padding;
+		}
+
+		&--download {
+
+			.page-section__image {
+				position: static;
+				margin: 0;
+
+				img {
+					width: 100%;
+				}
+			}
+		}
+	}
+}

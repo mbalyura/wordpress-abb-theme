@@ -1,0 +1,43 @@
+.footer {
+	padding: 75px 0;
+	background: $footer-bg;
+	color: $text-color-bright;
+
+	&__container {
+		display: flex;
+		align-items: center;
+		width: 100%;
+	}
+
+	&__social-links {
+		display: flex;
+	}
+
+	&__social-link svg {
+		display: block;
+	}
+
+	&__social-item:not(:last-child) {
+		margin-right: 10px;
+	}
+
+	&__copyright {
+		margin-left: auto;
+	}
+
+	@media (max-width: map-get($breakpoints, "desktop")) {
+		padding: 35px 0;
+
+		&__container {
+			flex-direction: column;
+		}
+
+		&__social-links {
+			margin-bottom: 12px;
+		}
+
+		&__copyright {
+			margin: 0;
+		}
+	}
+}

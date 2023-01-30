@@ -1,0 +1,25 @@
+$base-bg: #fff;
+$footer-bg: #6e6e6e;
+$primary-color: #ff000f;
+$text-color-black: #000;
+$text-color-dark: #262626;
+$text-color-bright: #fff;
+
+$base-font-family: "Roboto", sans-serif;
+$base-font-size: 18px;
+$h1-font-size: 48px;
+$h1-font-size-mobile: 36px;
+$h2-font-size: 32px;
+$h2-font-size-mobile: 28px;
+
+$breakpoints: (
+	mobile:  320px,
+	tablet:  740px,
+	desktop: 980px,
+	wide:    1200px
+);
+
+$container-width: 1200px;
+$container-padding: 20px;
+$header-height: 80px;
+$hero-height: 600px;
