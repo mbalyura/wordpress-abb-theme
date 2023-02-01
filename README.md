@@ -1,12 +1,9 @@
-## How to run this project in easiest way :)
+## How to run this project in easiest way 😎
 
-Run Wordpress with docker (need docker, docker-compose to be installed locally. At first run, this command pull the images, and then start containers)
+Run Wordpress with Docker (need docker, docker-compose to be installed locally).
+At first run, this command pull the images, and then start containers. When mysql container started, they will be inited with sql-dump stored in db folder.
 
     $ ./up
-
-Restore database from dump (file db/backup.sql need to exist):
-
-    $ ./db_restore
 
 Build theme assets (need node):
 
@@ -14,7 +11,9 @@ Build theme assets (need node):
     $ npm i
     $ npm run build
 
-__Go to localhost:8000 and see the site)__
+__Go to localhost:8000 and you will see the running site (login/password for WP admin panel is ***admin:admin***)__
+
+
 
 It also possible to run project in developmend mode:
 
