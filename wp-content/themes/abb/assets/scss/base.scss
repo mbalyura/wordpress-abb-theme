@@ -56,3 +56,17 @@ img {
 		padding: 16px 28px;
 	}
 }
+
+.icon {
+	display: block;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+}
+
+//fix mobile wpadminbar with fixed header
+@media screen and (max-width: 600px) {
+
+	#wpadminbar {
+		position: fixed;
+	}
+}

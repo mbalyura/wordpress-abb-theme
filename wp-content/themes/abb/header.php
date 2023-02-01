@@ -23,8 +23,7 @@
                 'container_class' => 'main-menu',
                 'theme_location' => 'primary',
                 'items_wrap' => '<ul class="main-menu__container">%3$s</ul>',
-                // 'before' => '<span>'
-                // 'menu_class' => 'qwe'
             ]); ?>
         </div>
     </header>
+    <main class="main">

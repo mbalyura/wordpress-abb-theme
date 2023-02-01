@@ -1,10 +1,8 @@
-/*
-version: 1.1
-*/
-
 @import "_variables";
 @import "_fonts";
 @import "_reset";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
 @import "base";
 @import "blocks/header";
 @import "blocks/main-menu";
@@ -12,3 +10,4 @@ version: 1.1
 @import "blocks/page-section";
 @import "blocks/footer";
 @import "blocks/footer-menu";
+@import "blocks/social-menu";

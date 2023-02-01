@@ -1,0 +1,24 @@
+.social-menu {
+
+	&__container {
+		display: flex;
+	}
+
+	&__item:not(:last-child) {
+		margin-right: 10px;
+	}
+
+	&__link {
+		color: inherit;
+		display: block;
+
+		.icon {
+			font-size: 32px;
+		}
+	}
+
+	@media (max-width: map-get($breakpoints, "desktop")) {
+
+		margin-bottom: 12px;
+	}
+}

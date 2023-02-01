@@ -1,5 +1,14 @@
 <?php
 
+/* clean-up header */
+remove_action('wp_head', 'wp_generator');
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'rest_output_link_wp_head');
+remove_action('wp_head', 'wp_oembed_add_discovery_links');
+remove_action('template_redirect', 'rest_output_link_header');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'wp_shortlink_wp_head');
+
 /* actions */
 function abb_setup()
 {
@@ -24,7 +33,8 @@ function abb_init_menus()
 {
     $locations = [
         'primary' => 'Header',
-        'footer' => 'Footer'
+        'footer-menu' => 'Footer Menu',
+        'social-menu' => 'Social Menu'
     ];
 
     register_nav_menus($locations);
@@ -34,21 +44,27 @@ add_action('init', 'abb_init_menus');
 
 function abb_register_styles()
 {
-    wp_enqueue_style('main', get_template_directory_uri() . '/dist/styles.css', [], wp_get_theme()->get('Version'));
+    wp_enqueue_style('main', get_template_directory_uri() . '/assets/dist/main.css', [], wp_get_theme()->get('Version'));
 }
 add_action('wp_enqueue_scripts', 'abb_register_styles');
 
 
 /* filters */
-//custom classes to menu
+//disable gutenberg
+add_filter('use_block_editor_for_post', '__return_false');
+
+//custom classes to menus
 function add_menu_item_class($classes, $item, $args)
 {
     switch ($args->theme_location) {
         case 'primary':
             $classes[] = 'main-menu__item';
             break;
-        case 'footer':
+        case 'footer-menu':
             $classes[] = 'footer-menu__item';
+            break;
+        case 'social-menu':
+            $classes[] = 'social-menu__item';
             break;
         default:
             break;
@@ -64,8 +80,11 @@ function add_menu_link_class($atts, $item, $args)
         case 'primary':
             $atts['class'] = 'main-menu__link';
             break;
-        case 'footer':
+        case 'footer-menu':
             $atts['class'] = 'footer-menu__link';
+            break;
+        case 'social-menu':
+            $atts['class'] = 'social-menu__link';
             break;
         default:
             break;
@@ -74,13 +93,3 @@ function add_menu_link_class($atts, $item, $args)
     return $atts;
 }
 add_filter('nav_menu_link_attributes', 'add_menu_link_class', 10, 3);
-
-
-/* clean-up header */
-remove_action('wp_head', 'wp_generator');
-remove_action('wp_head', 'rsd_link');
-remove_action('wp_head', 'rest_output_link_wp_head');
-remove_action('wp_head', 'wp_oembed_add_discovery_links');
-remove_action('template_redirect', 'rest_output_link_header');
-remove_action('wp_head', 'wlwmanifest_link');
-remove_action('wp_head', 'wp_shortlink_wp_head');

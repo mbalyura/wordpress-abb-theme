@@ -16,7 +16,6 @@
 		}
 	}
 
-
 	&__row {
 		display: grid;
 		gap: 16px;
@@ -152,11 +151,13 @@
 		&--download {
 
 			.page-section__image {
-				position: static;
+				left: 0;
+				top: -15px;
 				margin: 0;
 
 				img {
 					width: 100%;
+					height: auto;
 				}
 			}
 		}
