@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+while true; do
+    read -p "Do you want to restore database from ./db/backup.sql? Current database data will lost! " yn
+    case $yn in
+        [Yy]* ) docker exec -i wordpress_db mysql -u root --password=pass wordpress < db/backup.sql; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no";;
+    esac
+done

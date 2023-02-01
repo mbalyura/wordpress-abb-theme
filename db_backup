@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -e
+
+docker exec wordpress_db mysqldump -v -u root --password=pass wordpress > db/backup.sql
+
+echo "Database was backuped to ./db/backup.sql"

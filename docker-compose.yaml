@@ -3,8 +3,10 @@ version: '3.5'
 services:
   db:
     image: mysql:5.7
+    container_name: wordpress_db
     volumes:
       - db_data:/var/lib/mysql
+      - ./db/backup.sql:/docker-entrypoint-initdb.d/backup.sql
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=pass
@@ -32,6 +34,7 @@ services:
       - wpsite
 
   phpmyadmin:
+    container_name: wordpress_phpmyadmin
     depends_on:
       - db
     image: phpmyadmin/phpmyadmin:latest
