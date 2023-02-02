@@ -29,7 +29,10 @@ Stop and remove containers:
 
     $ ./down
 
-
 Make database dump (dump stored to db/backup.sql):
 
     $ ./db_dump
+
+Restore database from dump (dump stored to db/backup.sql):
+
+    $ ./db_restore
