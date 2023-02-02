@@ -13,6 +13,49 @@
 		@include link-hover;
 	}
 
+	&__item {
+		position: relative;
+
+		&.menu-item-has-children {
+			padding-right: 18px;
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 7px;
+				right: 0;
+				padding: 4px;
+				border: solid $primary-color;
+				border-width: 0 2px 2px 0;
+				transform: rotate(45deg);
+			}
+
+			&:hover {
+
+				.sub-menu {
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	.sub-menu {
+		position: absolute;
+		visibility: hidden;
+		opacity: 0;
+		padding: 40px 10px 15px;
+		z-index: 1;
+		background: $base-bg;
+		transition: 0.2s;
+		min-width: 250px;
+
+		.main-menu__item {
+			padding: 5px 0;
+		}
+	}
+
+
 	@media (max-width: map-get($breakpoints, "desktop")) {
 
 		display: none;
@@ -25,6 +68,18 @@
 
 		&__item {
 			padding: 5px 0;
+
+			&.menu-item-has-children::after {
+				content: none;
+			}
+		}
+
+		.sub-menu {
+			visibility: visible;
+			position: static;
+			opacity: 1;
+			padding: 10px 0 5px 25px;
+			min-width: auto;
 		}
 	}
 }
