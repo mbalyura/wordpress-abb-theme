@@ -48,9 +48,7 @@ img {
 	border: none;
 	transition: background-color 0.2s;
 
-	&:hover {
-		background: adjust-color($color: $primary-color, $lightness: -3%);
-	}
+	@include link-hover(background-color, $primary-color, -3%, -8%);
 
 	@media (max-width: map-get($breakpoints, "desktop")) {
 		padding: 16px 28px;

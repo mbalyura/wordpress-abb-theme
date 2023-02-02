@@ -1,0 +1,11 @@
+@mixin link-hover($property: color, $color: $text-color-black, $hover: +33%, $active: +55%) {
+	transition: $property 0.2s;
+
+	&:hover {
+		#{$property}: adjust-color($color: $color, $lightness: $hover);
+	}
+
+	&:active {
+		#{$property}: adjust-color($color: $color, $lightness: $active);
+	}
+}

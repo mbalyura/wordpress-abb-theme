@@ -9,11 +9,8 @@
 
 	&__link {
 		color: $text-color-black;
-		transition: color 0.2s;
 
-		&:hover {
-			color: adjust-color($color: $text-color-black, $lightness: +33%);
-		}
+		@include link-hover;
 	}
 
 	@media (max-width: map-get($breakpoints, "desktop")) {

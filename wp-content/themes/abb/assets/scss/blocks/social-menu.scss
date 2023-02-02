@@ -9,12 +9,15 @@
 	}
 
 	&__link {
-		color: inherit;
 		display: block;
 
 		.icon {
 			font-size: 32px;
 		}
+
+		color: $text-color-bright;
+
+		@include link-hover(color, $text-color-bright, -10%, -20%);
 	}
 
 	@media (max-width: map-get($breakpoints, "desktop")) {

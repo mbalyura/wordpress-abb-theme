@@ -5,6 +5,7 @@
 	&__image {
 		display: block;
 		width: 100%;
+		height: auto;
 		max-height: $hero-height;
 		min-height: $hero-height * 0.75;
 		object-fit: cover;
