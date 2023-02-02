@@ -5,9 +5,17 @@ remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'rest_output_link_wp_head');
 remove_action('wp_head', 'wp_oembed_add_discovery_links');
-remove_action('template_redirect', 'rest_output_link_header');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'wp_shortlink_wp_head');
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+function abb_remove_unusual_styles()
+{
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('global-styles');
+    wp_dequeue_style('classic-theme-styles');
+}
+add_action('wp_enqueue_scripts', 'abb_remove_unusual_styles', 100);
 
 /* actions */
 function abb_setup()
@@ -29,6 +37,15 @@ function abb_setup()
 }
 add_action('after_setup_theme', 'abb_setup');
 
+function abb_add_custom_image_sizes()
+{
+    add_image_size('hero-bg-mobile', 1440, 450);
+    add_image_size('full-width-mobile', 740);
+    add_image_size('section', 388);
+    add_image_size('section-download', 563);
+}
+add_action('after_setup_theme', 'abb_add_custom_image_sizes');
+
 function abb_init_menus()
 {
     $locations = [
@@ -41,17 +58,30 @@ function abb_init_menus()
 }
 add_action('init', 'abb_init_menus');
 
-
 function abb_register_styles()
 {
     wp_enqueue_style('main', get_template_directory_uri() . '/assets/dist/main.css', [], wp_get_theme()->get('Version'));
 }
 add_action('wp_enqueue_scripts', 'abb_register_styles');
 
-
 /* filters */
 //disable gutenberg
 add_filter('use_block_editor_for_post', '__return_false');
+
+// remove default image sizes
+function abb_remove_default_image_sizes($sizes)
+{
+    return array_diff($sizes, [
+        'thumbnail',
+        'small',
+        'medium',
+        'large',
+        'medium_large',
+        '1536x1536',
+        '2048x2048',
+    ]);
+}
+add_filter('intermediate_image_sizes', 'abb_remove_default_image_sizes');
 
 //custom classes to menus
 function add_menu_item_class($classes, $item, $args)

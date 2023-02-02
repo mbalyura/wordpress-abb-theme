@@ -4,7 +4,15 @@
         <div class="page-section__row page-section__row--2">
             <div class="page-section__column">
                 <div class="page-section__image">
-                    <img src="<?= get_template_directory_uri() . '/assets/images/ratgeber.png'?>" alt="ratgeber">
+                    <img
+                        srcset="<?= $args['image']['sizes']['full-width-mobile'] . ' 740w' ?>,
+                                <?= $args['image']['sizes']['section-download'] . ' 563w' ?>"
+                        sizes="(max-width: 740px) 740px, 563px"
+                        src="<?= $args['image']['sizes']['section-download'] ?>"
+                        alt="<?= $args['image']['alt'] ?>"
+                        width="<?= $args['image']['sizes']['section-download-width'] ?>"
+                        height="<?= $args['image']['sizes']['section-download-height'] ?>"
+                    >
                 </div>
             </div>
             <div class="page-section__column page-section__column--content">

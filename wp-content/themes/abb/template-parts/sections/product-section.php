@@ -3,15 +3,23 @@
         <div class="page-section__row page-section__row--2">
             <div class="page-section__column">
                 <div class="page-section__image">
-                    <img src="<?= get_template_directory_uri() . '/assets/images/section' . $args['index'] . '.png'?>" alt="section-image">
+                    <img
+                        srcset="<?= $args['image']['sizes']['full-width-mobile'] . ' 740w' ?>,
+                                <?= $args['image']['sizes']['section'] . ' 388w' ?>"
+                        sizes="(max-width: 740px) 740px, 388px"
+                        src="<?= $args['image']['sizes']['section'] ?>"
+                        alt="<?= $args['image']['alt'] ?>"
+                        width="<?= $args['image']['sizes']['section-width'] ?>"
+                        height="<?= $args['image']['sizes']['section-height'] ?>"
+                    >
                 </div>
             </div>
             <div class="page-section__column page-section__column--content">
-                <h2 class="page-section__heading">Frequenzumrichter</h2>
+                <h2 class="page-section__heading"><?= $args['heading'] ?></h2>
                 <div class="page-section__text">
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labor.
+                    <?= $args['text'] ?>
                 </div>
-                <a class="button" href="">Mehr erfahren</a>
+                <a class="button" href="<?= $args['button_link'] ?>"><?= $args['button_text'] ?></a>
             </div>
         </div>
     </div>

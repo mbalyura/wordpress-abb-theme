@@ -1,12 +1,20 @@
 <div class="page-section__card">
     <div class="page-section__card-image">
-        <img src="<?= get_template_directory_uri() . '/assets/images/card' . $args['index'] + 1 . '.png'?>" alt="card-img">
+        <img
+            srcset="<?= $args['image']['sizes']['full-width-mobile'] . ' 740w' ?>,
+                    <?= $args['image']['sizes']['section'] . ' 388w' ?>"
+            sizes="(max-width: 740px) 740px, 388px"
+            src="<?= $args['image']['sizes']['section'] ?>"
+            alt="<?= $args['image']['alt'] ?>"
+            width="<?= $args['image']['sizes']['section-width'] ?>"
+            height="<?= $args['image']['sizes']['section-height'] ?>"
+        >
     </div>
     <div class="page-section__card-heading">
-    Überschrift lorem ipsum dolor sit
+        <?= $args['heading'] ?>
     </div>
     <div class="page-section__card-text">
-    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labor.
+        <?= $args['text'] ?>
     </div>
-    <a class="button" href="">Weiterlesen</a>
+    <a class="button" href="<?= $args['button_link'] ?>"><?= $args['button_text'] ?></a>
 </div>
